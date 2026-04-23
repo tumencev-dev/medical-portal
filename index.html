@@ -6,14 +6,15 @@
     <title>ИНФОРМАЦИОННАЯ СИСТЕМА</title>
     <link rel="stylesheet" href="css/custom.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5050eb;">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center" href="index.html" style="gap: 10px;">
-                <span style="font-size: 2rem;">🏥</span>
+                <i class="fas fa-hospital-user" style="font-size: 2rem;"></i>
                 <span class="navbar-brand-text">ИНФОРМАЦИОННАЯ СИСТЕМА</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
@@ -23,27 +24,27 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" href="index.html">
-                            <i class="bi bi-house-door me-1"></i>Главная
+                            <i class="fas fa-home me-1"></i>Главная
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="phonebook.html">
-                            <i class="bi bi-telephone me-1"></i>Телефонный справочник
+                            <i class="fas fa-phone-alt me-1"></i>Телефонный справочник
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="knowledgebase.html">
-                            <i class="bi bi-book me-1"></i>База знаний
+                            <i class="fas fa-book me-1"></i>База знаний
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="t20.html" target="_blank">
-                            <i class="bi bi-code-square me-1"></i>Справочник Т020
+                            <i class="fas fa-code me-1"></i>Справочник Т020
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://www.minsport.gov.ru/" target="_blank">
-                            <i class="bi bi-info-circle me-1"></i>Справочная
+                            <i class="fas fa-info-circle me-1"></i>Справочная
                         </a>
                     </li>
                 </ul>
@@ -53,7 +54,7 @@
                         <strong>Гость</strong>
                     </div>
                     <a href="#" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#loginModal">
-                        <i class="bi bi-box-arrow-in-right"></i> Войти
+                        <i class="fas fa-sign-in-alt"></i> Войти
                     </a>
                 </div>
             </div>
@@ -68,7 +69,7 @@
                     <div class="d-flex justify-content-between align-items-start">
                         <h3 class="news-title">Добро пожаловать в информационную систему</h3>
                         <span class="news-date">
-                            <i class="bi bi-calendar"></i>
+                            <i class="far fa-calendar-alt"></i>
                             23 апреля 2026
                         </span>
                     </div>
@@ -88,55 +89,55 @@
             <div class="service-row">
                 <div class="service-card">
                     <div class="service-card-img">
-                        <i class="bi bi-envelope" style="font-size: 3rem; color: #5050eb;"></i>
+                        <i class="fas fa-envelope" style="font-size: 3rem; color: white;"></i>
                     </div>
                     <div class="service-card-body">
                         <h5 class="service-card-title">Электронная почта MED-TO</h5>
                         <p class="service-card-text">Если у вас нет действующей учетной записи электронной почты вы можете подать заявку по кнопке ниже</p>
                     </div>
                     <div class="service-card-footer">
-                        <a href="https://mail.google.com/" target="_blank" class="btn btn-primary btn-sm">Перейти в почту</a>
-                        <a href="sd_request.html" class="btn btn-outline-primary btn-sm">Заявка на учетную запись</a>
+                        <a href="https://mail.google.com/" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-envelope me-1"></i> Перейти в почту</a>
+                        <a href="sd_request.html" class="btn btn-outline-primary btn-sm"><i class="fas fa-file-alt me-1"></i> Заявка</a>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="service-card-img">
-                        <i class="bi bi-camera-video" style="font-size: 3rem; color: #5050eb;"></i>
+                        <i class="fas fa-video" style="font-size: 3rem; color: white;"></i>
                     </div>
                     <div class="service-card-body">
                         <h5 class="service-card-title">MIND - Сервис видеоконференций</h5>
                         <p class="service-card-text"></p>
                     </div>
                     <div class="service-card-footer">
-                        <a href="mind_links.html" class="btn btn-primary btn-sm">Ссылки для ВКС</a>
-                        <a href="mind_links.html" class="btn btn-outline-primary btn-sm">Прочие ВКС</a>
+                        <a href="mind_links.html" class="btn btn-primary btn-sm"><i class="fas fa-link me-1"></i> Ссылки для ВКС</a>
+                        <a href="mind_links.html" class="btn btn-outline-primary btn-sm"><i class="fas fa-plus-circle me-1"></i> Прочие ВКС</a>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="service-card-img">
-                        <i class="bi bi-chat-dots" style="font-size: 3rem; color: #5050eb;"></i>
+                        <i class="fas fa-comment-dots" style="font-size: 3rem; color: white;"></i>
                     </div>
                     <div class="service-card-body">
                         <h5 class="service-card-title">MAX - веб-версия</h5>
                         <p class="service-card-text">При первом открытии нужно будет авторизоваться по QR-коду</p>
                     </div>
                     <div class="service-card-footer">
-                        <a href="https://web.max.ru/" target="_blank" class="btn btn-primary btn-sm">Перейти</a>
+                        <a href="https://web.max.ru/" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-external-link-alt me-1"></i> Перейти</a>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="service-card-img">
-                        <i class="bi bi-file-text" style="font-size: 3rem; color: #5050eb;"></i>
+                        <i class="fas fa-file-signature" style="font-size: 3rem; color: white;"></i>
                     </div>
                     <div class="service-card-body">
                         <h5 class="service-card-title">СЭД «БЮРОКРАТ»</h5>
                         <p class="service-card-text">Логин и пароль вы можете получить у техника-программиста</p>
                     </div>
                     <div class="service-card-footer">
-                        <a href="#" class="btn btn-primary btn-sm" onclick="alert('Доступ по запросу')">Перейти</a>
+                        <a href="#" class="btn btn-primary btn-sm" onclick="alert('Доступ по запросу')"><i class="fas fa-lock me-1"></i> Перейти</a>
                     </div>
                 </div>
             </div>
@@ -144,54 +145,54 @@
             <div class="service-row">
                 <div class="service-card">
                     <div class="service-card-img">
-                        <i class="bi bi-shield-shaded" style="font-size: 3rem; color: #5050eb;"></i>
+                        <i class="fas fa-shield-virus" style="font-size: 3rem; color: white;"></i>
                     </div>
                     <div class="service-card-body">
                         <h5 class="service-card-title">ИС «Инфекций.Нет»</h5>
                         <p class="service-card-text">Если у вас нет действующей учетной записи вы можете подать заявку</p>
                     </div>
                     <div class="service-card-footer">
-                        <a href="#" class="btn btn-primary btn-sm" onclick="alert('Доступ по запросу')">Перейти</a>
-                        <a href="sd_request.html" class="btn btn-outline-primary btn-sm">Заявка на учетную запись</a>
+                        <a href="#" class="btn btn-primary btn-sm" onclick="alert('Доступ по запросу')"><i class="fas fa-shield-alt me-1"></i> Перейти</a>
+                        <a href="sd_request.html" class="btn btn-outline-primary btn-sm"><i class="fas fa-file-alt me-1"></i> Заявка</a>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="service-card-img">
-                        <i class="bi bi-activity" style="font-size: 3rem; color: #5050eb;"></i>
+                        <i class="fas fa-x-ray" style="font-size: 3rem; color: white;"></i>
                     </div>
                     <div class="service-card-body">
                         <h5 class="service-card-title">Региональная радиологическая информационная система</h5>
                         <p class="service-card-text">Логин и пароль для доступа можно получить у техника-программиста</p>
                     </div>
                     <div class="service-card-footer">
-                        <a href="#" class="btn btn-primary btn-sm" onclick="alert('Доступ по запросу')">Перейти</a>
+                        <a href="#" class="btn btn-primary btn-sm" onclick="alert('Доступ по запросу')"><i class="fas fa-laptop-medical me-1"></i> Перейти</a>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="service-card-img">
-                        <i class="bi bi-heart-pulse" style="font-size: 3rem; color: #5050eb;"></i>
+                        <i class="fas fa-heartbeat" style="font-size: 3rem; color: white;"></i>
                     </div>
                     <div class="service-card-body">
                         <h5 class="service-card-title">Регистр сахарного диабета</h5>
                         <p class="service-card-text">Логин и пароль вы можете получить у техника-программиста</p>
                     </div>
                     <div class="service-card-footer">
-                        <a href="#" class="btn btn-primary btn-sm" onclick="alert('Доступ по запросу')">Перейти</a>
+                        <a href="#" class="btn btn-primary btn-sm" onclick="alert('Доступ по запросу')"><i class="fas fa-chart-line me-1"></i> Перейти</a>
                     </div>
                 </div>
 
                 <div class="service-card">
                     <div class="service-card-img">
-                        <i class="bi bi-archive" style="font-size: 3rem; color: #5050eb;"></i>
+                        <i class="fas fa-archive" style="font-size: 3rem; color: white;"></i>
                     </div>
                     <div class="service-card-body">
                         <h5 class="service-card-title">Файловый архив «МИАЦ»</h5>
                         <p class="service-card-text">Логин и пароль вы можете получить у техника-программиста</p>
                     </div>
                     <div class="service-card-footer">
-                        <a href="#" class="btn btn-primary btn-sm" onclick="alert('Доступ по запросу')">Перейти</a>
+                        <a href="#" class="btn btn-primary btn-sm" onclick="alert('Доступ по запросу')"><i class="fas fa-folder-open me-1"></i> Перейти</a>
                     </div>
                 </div>
             </div>
@@ -203,12 +204,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Вход в систему</h5>
+                    <h5 class="modal-title"><i class="fas fa-sign-in-alt me-2"></i>Вход в систему</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <p>Демо-режим. Полный функционал доступен в корпоративной сети.</p>
-                    <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal" onclick="alert('Демо-режим работы')">Войти как гость</button>
+                    <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal" onclick="alert('Демо-режим работы')">
+                        <i class="fas fa-user-friends me-2"></i>Войти как гость
+                    </button>
                 </div>
             </div>
         </div>

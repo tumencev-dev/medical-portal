@@ -6,13 +6,14 @@
     <title>БАЗА ЗНАНИЙ</title>
     <link rel="stylesheet" href="css/custom.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📚%3C/text%3E%3C/svg%3E">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5050eb;">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center" href="index.html" style="gap: 10px;">
-                <span style="font-size: 2rem;">🏥</span>
+                <i class="fas fa-book-open" style="font-size: 1.5rem;"></i>
                 <span class="navbar-brand-text">БАЗА ЗНАНИЙ</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
@@ -20,15 +21,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html"><i class="bi bi-house-door me-1"></i>Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="phonebook.html"><i class="bi bi-telephone me-1"></i>Телефонный справочник</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="knowledgebase.html"><i class="bi bi-book me-1"></i>База знаний</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i>Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="phonebook.html"><i class="fas fa-phone-alt me-1"></i>Телефонный справочник</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="knowledgebase.html"><i class="fas fa-book me-1"></i>База знаний</a></li>
                 </ul>
             </div>
         </div>
@@ -39,13 +34,21 @@
             <div class="col-md-3 mb-4">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
-                        <i class="bi bi-folder"></i> Категории
+                        <i class="fas fa-folder-open me-2"></i> Категории
                     </div>
                     <div class="list-group list-group-flush" id="categories">
-                        <button class="list-group-item list-group-item-action active" data-cat="all">Все статьи</button>
-                        <button class="list-group-item list-group-item-action" data-cat="instructions">Инструкции</button>
-                        <button class="list-group-item list-group-item-action" data-cat="faq">Вопрос-ответ</button>
-                        <button class="list-group-item list-group-item-action" data-cat="software">Программное обеспечение</button>
+                        <button class="list-group-item list-group-item-action active" data-cat="all">
+                            <i class="fas fa-list me-2"></i>Все статьи
+                        </button>
+                        <button class="list-group-item list-group-item-action" data-cat="instructions">
+                            <i class="fas fa-clipboard-list me-2"></i>Инструкции
+                        </button>
+                        <button class="list-group-item list-group-item-action" data-cat="faq">
+                            <i class="fas fa-question-circle me-2"></i>Вопрос-ответ
+                        </button>
+                        <button class="list-group-item list-group-item-action" data-cat="software">
+                            <i class="fas fa-laptop-code me-2"></i>Программное обеспечение
+                        </button>
                     </div>
                 </div>
             </div>
@@ -53,7 +56,7 @@
                 <div class="input-group mb-4">
                     <input type="text" class="form-control" id="searchKnowledge" placeholder="Поиск по базе знаний...">
                     <button class="btn btn-primary" onclick="searchKnowledge()">
-                        <i class="bi bi-search"></i> Найти
+                        <i class="fas fa-search"></i> Найти
                     </button>
                 </div>
                 
@@ -61,9 +64,11 @@
                     <div class="knowledge-item" data-cat="instructions">
                         <div class="card mb-3">
                             <div class="card-body">
-                                <h5 class="card-title">Как подключиться к рабочей сети?</h5>
+                                <h5 class="card-title"><i class="fas fa-network-wired me-2"></i>Как подключиться к рабочей сети?</h5>
                                 <p class="card-text">Инструкция по настройке VPN-подключения для удаленной работы...</p>
-                                <a href="#" class="btn btn-sm btn-outline-primary" onclick="showArticle(this)">Читать далее →</a>
+                                <a href="#" class="btn btn-sm btn-outline-primary" onclick="showArticle(this)">
+                                    <i class="fas fa-arrow-right me-1"></i>Читать далее →
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -71,9 +76,11 @@
                     <div class="knowledge-item" data-cat="faq">
                         <div class="card mb-3">
                             <div class="card-body">
-                                <h5 class="card-title">Что делать при сбое в работе МИС?</h5>
+                                <h5 class="card-title"><i class="fas fa-exclamation-triangle me-2"></i>Что делать при сбое в работе МИС?</h5>
                                 <p class="card-text">Пошаговый алгоритм действий при возникновении технических проблем...</p>
-                                <a href="#" class="btn btn-sm btn-outline-primary" onclick="showArticle(this)">Читать далее →</a>
+                                <a href="#" class="btn btn-sm btn-outline-primary" onclick="showArticle(this)">
+                                    <i class="fas fa-arrow-right me-1"></i>Читать далее →
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -81,9 +88,11 @@
                     <div class="knowledge-item" data-cat="software">
                         <div class="card mb-3">
                             <div class="card-body">
-                                <h5 class="card-title">Обновление антивирусного ПО</h5>
+                                <h5 class="card-title"><i class="fas fa-shield-alt me-2"></i>Обновление антивирусного ПО</h5>
                                 <p class="card-text">Регламент обновления и проверки корпоративных устройств...</p>
-                                <a href="#" class="btn btn-sm btn-outline-primary" onclick="showArticle(this)">Читать далее →</a>
+                                <a href="#" class="btn btn-sm btn-outline-primary" onclick="showArticle(this)">
+                                    <i class="fas fa-arrow-right me-1"></i>Читать далее →
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -100,8 +109,7 @@
                     <h5 class="modal-title" id="articleTitle"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body" id="articleContent">
-                </div>
+                <div class="modal-body" id="articleContent"></div>
             </div>
         </div>
     </div>
@@ -113,11 +121,11 @@
             const title = card.querySelector('.card-title').textContent;
             const content = card.querySelector('.card-text').textContent;
             
-            document.getElementById('articleTitle').textContent = title;
+            document.getElementById('articleTitle').innerHTML = title;
             document.getElementById('articleContent').innerHTML = `
                 <p>${content}</p>
                 <hr>
-                <p>Полная версия статьи доступна в корпоративной сети. Обратитесь к техническому специалисту.</p>
+                <p><i class="fas fa-info-circle me-2"></i>Полная версия статьи доступна в корпоративной сети. Обратитесь к техническому специалисту.</p>
             `;
             
             new bootstrap.Modal(document.getElementById('articleModal')).show();
@@ -133,7 +141,6 @@
             });
         }
         
-        // Фильтрация по категориям
         document.querySelectorAll('#categories .list-group-item').forEach(btn => {
             btn.addEventListener('click', () => {
                 const cat = btn.dataset.cat;
