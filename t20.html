@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Фильтр услуг | T020 справочник</title>
+    <title>Фильтр услуг | Справочник T020</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -224,7 +224,7 @@
 </head>
 <body>
 <div class="container">
-    <h1><i class="fas fa-clinic-medical me-2"></i>Профилактические осмотры — справочник T020</h1>
+    <h1><i class="fas fa-clinic-medical me-2"></i> Профилактические осмотры — справочник T020</h1>
 
     <!-- Фильтры -->
     <div class="filter-grid">
@@ -1238,14 +1238,14 @@
             }
 
             html += `<tr class="${mandatoryClass}">
-                <td><code><i class="fas fa-code me-1"></i>${row[1]}</code></td>
+                <td><code>${row[1]}</code></td>
                 <td>${row[2]}</td>
-                <td><span class="group-badge"><i class="fas fa-hashtag me-1"></i>${row[3]}</span></td>
-                <td><code><i class="fas fa-barcode me-1"></i>${row[4]}</code></td>
-                <td><i class="fas fa-stethoscope me-1"></i>${row[5]}</td>
+                <td><span class="group-badge">${row[3]}</span></td>
+                <td><code>${row[4]}</code></td>
+                <td>${row[5]}</td>
                 <td>${row[6] === '1' ? '<i class="fas fa-check-circle me-1" style="color:#0a5c2e"></i> да' : '<i class="fas fa-times-circle me-1" style="color:#dc3545"></i> нет'}</td>
-                <td><i class="far fa-calendar-alt me-1"></i>${ageMonth}</td>
-                <td><i class="fas fa-calendar-alt me-1"></i>${ageYear}</td>
+                <td>${ageMonth}</td>
+                <td>${ageYear}</td>
                 <td><span class="gender-badge">${genderIcon}${genderText}</span></td>
              </tr>`;
         });
