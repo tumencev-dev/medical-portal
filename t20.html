@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Фильтр услуг | T020 (ПОЛНЫЙ справочник + Группа)</title>
+    <title>Фильтр услуг | T020 справочник</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
             box-sizing: border-box;
@@ -60,6 +62,9 @@
             margin-bottom: 6px;
             font-size: 0.9rem;
         }
+        .filter-item label i {
+            margin-right: 6px;
+        }
         .filter-item input, .filter-item select {
             padding: 12px 16px;
             border: 2px solid #b9d3e9;
@@ -77,6 +82,9 @@
             color: #2f607e;
             margin-top: 5px;
             padding-left: 12px;
+        }
+        .age-hint i {
+            margin-right: 5px;
         }
         .checkbox-group {
             display: flex;
@@ -108,6 +116,9 @@
             font-size: 0.95rem;
             color: #103d5c;
         }
+        .badge i {
+            margin-right: 8px;
+        }
         .badge span {
             background: #1d6fa5;
             color: white;
@@ -124,6 +135,9 @@
             border-radius: 40px;
             cursor: pointer;
             transition: 0.2s;
+        }
+        .reset-btn i {
+            margin-right: 6px;
         }
         .reset-btn:hover {
             background: #1d6fa5;
@@ -151,6 +165,9 @@
             top: 0;
             z-index: 10;
         }
+        th i {
+            margin-right: 6px;
+        }
         td {
             padding: 14px 10px;
             border-bottom: 1px solid #cde0f0;
@@ -169,6 +186,7 @@
             border-radius: 30px;
             padding: 2px 12px;
             font-weight: 500;
+            display: inline-block;
         }
         .group-badge {
             background: #e6f0fa;
@@ -185,6 +203,12 @@
             color: #7b9eb8;
             font-size: 1.2rem;
         }
+        .empty-message i {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+            color: #b0c4de;
+        }
         .footer-info {
             margin-top: 30px;
             background: #e9f0f7;
@@ -192,36 +216,40 @@
             padding: 14px 28px;
             color: #2f607e;
         }
+        .footer-info i {
+            margin-right: 8px;
+        }
+
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>📋 Профилактические осмотры — ПОЛНЫЙ справочник T020 (2026)</h1>
+    <h1><i class="fas fa-clinic-medical me-2"></i>Профилактические осмотры — справочник T020</h1>
 
     <!-- Фильтры -->
     <div class="filter-grid">
         <div class="filter-item full-width">
-            <label>🔍 Поиск по названию / коду (T003, V001, наименование)</label>
+            <label><i class="fas fa-search"></i> Поиск по названию / коду</label>
             <input type="text" id="searchText" placeholder="Введите часть кода или названия..." autocomplete="off">
         </div>
         <div class="filter-item">
-            <label>📌 Код услуги (T003)</label>
+            <label><i class="fas fa-tag"></i> Код услуги (T003)</label>
             <select id="filterT003">
                 <option value="">Все коды</option>
             </select>
         </div>
         <div class="filter-item">
-            <label>🏷 Номенклатурный код (V001)</label>
+            <label><i class="fas fa-barcode"></i> Номенклатурный код (V001)</label>
             <select id="filterV001">
                 <option value="">Все коды</option>
             </select>
         </div>
         <div class="filter-item">
-            <label>🔢 Номер группы</label>
+            <label><i class="fas fa-layer-group"></i> Номер группы</label>
             <input type="text" id="filterGroup" placeholder="1, 3, 5-10">
         </div>
         <div class="filter-item">
-            <label>⚕️ Обязательность</label>
+            <label><i class="fas fa-star-of-life"></i> Обязательность</label>
             <select id="filterMandatory">
                 <option value="">Все</option>
                 <option value="1">Только обязательные</option>
@@ -229,7 +257,7 @@
             </select>
         </div>
         <div class="filter-item">
-            <label>👤 Пол</label>
+            <label><i class="fas fa-venus-mars"></i> Пол</label>
             <select id="filterGender">
                 <option value="">Любой</option>
                 <option value="0">Пол не указан</option>
@@ -238,50 +266,52 @@
             </select>
         </div>
         <div class="filter-item">
-            <label>🧒 Возраст (лет) от</label>
+            <label><i class="fas fa-child"></i> Возраст (лет) от</label>
             <input type="number" id="ageYearFrom" min="0" max="120" placeholder="0">
         </div>
         <div class="filter-item">
-            <label>🧒 Возраст (лет) до</label>
+            <label><i class="fas fa-child"></i> Возраст (лет) до</label>
             <input type="number" id="ageYearTo" min="0" max="120" placeholder="1">
         </div>
         <div class="checkbox-group">
-            <label><input type="checkbox" id="showOnlyMandatory"> Только обязательные</label>
+            <label><input type="checkbox" id="showOnlyMandatory"> <i class="fas fa-check-circle"></i> Только обязательные</label>
         </div>
-        <button class="reset-btn" id="resetFiltersBtn">Сбросить</button>
+        <button class="reset-btn" id="resetFiltersBtn"><i class="fas fa-undo-alt"></i> Сбросить</button>
     </div>
-    <div class="age-hint">ⓘ Возраст учитывает и месяцы: 0–1 год = от 0 до 12 месяцев</div>
+    <div class="age-hint">
+        <i class="fas fa-info-circle"></i> Возраст учитывает и месяцы: 0–1 год = от 0 до 12 месяцев
+    </div>
 
     <!-- Статистика -->
     <div class="stats-bar">
-        <div class="badge">📄 всего строк: <span id="totalCount">0</span></div>
-        <div class="badge">✅ обязательных: <span id="mandatoryCount">0</span></div>
+        <div class="badge"><i class="fas fa-table-list"></i> всего строк: <span id="totalCount">0</span></div>
+        <div class="badge"><i class="fas fa-check-double"></i> обязательных: <span id="mandatoryCount">0</span></div>
     </div>
 
-    <!-- Таблица с группой -->
+    <!-- Таблица -->
     <div class="table-wrapper">
         <table>
             <thead>
                 <tr>
-                    <th>Код Т003</th>
-                    <th>Комплексная услуга</th>
-                    <th>№ группы</th>
-                    <th>V001</th>
-                    <th>Наименование вмешательства</th>
-                    <th>Обязат.</th>
-                    <th>Возраст (мес)</th>
-                    <th>Возраст (лет)</th>
-                    <th>Пол</th>
+                    <th><i class="fas fa-code"></i> Код Т003</th>
+                    <th><i class="fas fa-layer-group"></i> Комплексная услуга</th>
+                    <th><i class="fas fa-hashtag"></i> № группы</th>
+                    <th><i class="fas fa-barcode"></i> V001</th>
+                    <th><i class="fas fa-stethoscope"></i> Наименование вмешательства</th>
+                    <th><i class="fas fa-star-of-life"></i> Обязат.</th>
+                    <th><i class="fas fa-calendar"></i> Возраст (мес)</th>
+                    <th><i class="fas fa-calendar-alt"></i> Возраст (лет)</th>
+                    <th><i class="fas fa-venus-mars"></i> Пол</th>
                 </tr>
             </thead>
             <tbody id="tableBody">
-                <tr><td colspan="9" class="empty-message">Загрузка данных...</td></tr>
+                <tr><td colspan="9" class="empty-message"><i class="fas fa-spinner fa-pulse"></i>Загрузка данных...</td></tr>
             </tbody>
         </table>
     </div>
 
     <div class="footer-info">
-        ✅ Для детей до года в поле возраста вводим от 0 до 1.
+        <i class="fas fa-info-circle"></i> Для детей до года в поле возраста вводим от 0 до 1.
     </div>
 </div>
 
@@ -1102,7 +1132,7 @@
 
     function populateSelect(selectEl, values) {
         const currentVal = selectEl.value;
-        selectEl.innerHTML = '<option value="">Все</option>';
+        selectEl.innerHTML = '<option value="">Все коды</option>';
         Array.from(values).sort().forEach(v => {
             const option = document.createElement('option');
             option.value = v;
@@ -1116,43 +1146,27 @@
     populateSelect(filterT003, t003Set);
     populateSelect(filterV001, v001Set);
 
-    // Функция проверки возраста (с учетом месяцев)
+    // Функция проверки возраста
     function ageMatches(row, ageFromYears, ageToYears) {
-        const monthFrom = row[7] && row[7] !== '0' ? parseInt(row[7], 10) : null;  // индекс 7 - месяц с
-        const monthTo   = row[8] && row[8] !== '0' ? parseInt(row[8], 10) : null;  // индекс 8 - месяц по
-        const yearFrom  = row[9] && row[9] !== '0' ? parseInt(row[9], 10) : null;  // индекс 9 - год с
-        const yearTo    = row[10] && row[10] !== '0' ? parseInt(row[10], 10) : null; // индекс 10 - год по
+        const yearFrom = row[9] && row[9] !== '0' ? parseInt(row[9], 10) : null;
+        const yearTo = row[10] && row[10] !== '0' ? parseInt(row[10], 10) : null;
 
-        const getMinMonth = () => {
-            if (yearFrom !== null) return yearFrom * 12;
-            if (monthFrom !== null) return monthFrom;
-            return null;
-        };
-        const getMaxMonth = () => {
-            if (yearTo !== null) return (yearTo + 1) * 12 - 1;
-            if (monthTo !== null) return monthTo;
-            return null;
-        };
-
-        const rowMin = getMinMonth();
-        const rowMax = getMaxMonth();
-
-        if (rowMin === null && rowMax === null) return true;
+        if (yearFrom === null && yearTo === null) return true;
         if (ageFromYears === null && ageToYears === null) return true;
 
-        const filterMin = ageFromYears !== null ? ageFromYears * 12 : 0;
-        const filterMax = ageToYears !== null ? (ageToYears + 1) * 12 - 1 : 1200;
+        const filterMin = ageFromYears !== null ? ageFromYears : 0;
+        const filterMax = ageToYears !== null ? ageToYears : 120;
 
-        const effRowMin = rowMin !== null ? rowMin : 0;
-        const effRowMax = rowMax !== null ? rowMax : 1200;
+        const effRowMin = yearFrom !== null ? yearFrom : 0;
+        const effRowMax = yearTo !== null ? yearTo : 120;
 
         return Math.max(effRowMin, filterMin) <= Math.min(effRowMax, filterMax);
     }
 
-    // Функция проверки группы (поддержка диапазонов)
+    // Функция проверки группы
     function groupMatches(row, groupFilterText) {
         if (!groupFilterText) return true;
-        const groupVal = row[3]; // индекс 3 - номер группы
+        const groupVal = row[3];
         if (!groupVal && groupVal !== '0') return false;
         
         const num = parseInt(groupVal, 10);
@@ -1201,7 +1215,7 @@
         mandatorySpan.innerText = filtered.filter(r => r[6] === '1').length;
 
         if (filtered.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="9" class="empty-message">Нет записей</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="9" class="empty-message"><i class="fas fa-search"></i>Нет записей, соответствующих фильтрам</td></tr>`;
             return;
         }
 
@@ -1211,21 +1225,29 @@
             const ageMonth = (row[7] !== '0' || row[8] !== '0') ? `${row[7] || '0'}-${row[8] || '0'}` : '—';
             const ageYear = (row[9] !== '0' || row[10] !== '0') ? `${row[9] || '0'}-${row[10] || '0'}` : '—';
             let genderText = '—';
-            if (row[11] === '1') genderText = '♂ М';
-            else if (row[11] === '2') genderText = '♀ Ж';
-            else if (row[11] === '0') genderText = 'любой';
+            let genderIcon = '';
+            if (row[11] === '1') {
+                genderText = 'Мужской';
+                genderIcon = '<i class="fas fa-mars me-1"></i>';
+            } else if (row[11] === '2') {
+                genderText = 'Женский';
+                genderIcon = '<i class="fas fa-venus me-1"></i>';
+            } else if (row[11] === '0') {
+                genderText = 'любой';
+                genderIcon = '<i class="fas fa-venus-mars me-1"></i>';
+            }
 
             html += `<tr class="${mandatoryClass}">
-                <td><code>${row[1]}</code></td>
+                <td><code><i class="fas fa-code me-1"></i>${row[1]}</code></td>
                 <td>${row[2]}</td>
-                <td><span class="group-badge">${row[3]}</span></td>
-                <td><code>${row[4]}</code></td>
-                <td>${row[5]}</td>
-                <td>${row[6] === '1' ? '✅ да' : '❌ нет'}</td>
-                <td>${ageMonth}</td>
-                <td>${ageYear}</td>
-                <td><span class="gender-badge">${genderText}</span></td>
-            </tr>`;
+                <td><span class="group-badge"><i class="fas fa-hashtag me-1"></i>${row[3]}</span></td>
+                <td><code><i class="fas fa-barcode me-1"></i>${row[4]}</code></td>
+                <td><i class="fas fa-stethoscope me-1"></i>${row[5]}</td>
+                <td>${row[6] === '1' ? '<i class="fas fa-check-circle me-1" style="color:#0a5c2e"></i> да' : '<i class="fas fa-times-circle me-1" style="color:#dc3545"></i> нет'}</td>
+                <td><i class="far fa-calendar-alt me-1"></i>${ageMonth}</td>
+                <td><i class="fas fa-calendar-alt me-1"></i>${ageYear}</td>
+                <td><span class="gender-badge">${genderIcon}${genderText}</span></td>
+             </tr>`;
         });
         tbody.innerHTML = html;
     }
