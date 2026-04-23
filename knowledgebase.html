@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>БАЗА ЗНАНИЙ</title>
+    <link rel="stylesheet" href="css/custom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5050eb;">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="index.html" style="gap: 10px;">
+                <span style="font-size: 2rem;">🏥</span>
+                <span class="navbar-brand-text">БАЗА ЗНАНИЙ</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="bi bi-house-door me-1"></i>Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="phonebook.html"><i class="bi bi-telephone me-1"></i>Телефонный справочник</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="knowledgebase.html"><i class="bi bi-book me-1"></i>База знаний</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <i class="bi bi-folder"></i> Категории
+                    </div>
+                    <div class="list-group list-group-flush" id="categories">
+                        <button class="list-group-item list-group-item-action active" data-cat="all">Все статьи</button>
+                        <button class="list-group-item list-group-item-action" data-cat="instructions">Инструкции</button>
+                        <button class="list-group-item list-group-item-action" data-cat="faq">Вопрос-ответ</button>
+                        <button class="list-group-item list-group-item-action" data-cat="software">Программное обеспечение</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="input-group mb-4">
+                    <input type="text" class="form-control" id="searchKnowledge" placeholder="Поиск по базе знаний...">
+                    <button class="btn btn-primary" onclick="searchKnowledge()">
+                        <i class="bi bi-search"></i> Найти
+                    </button>
+                </div>
+                
+                <div id="knowledgeContent">
+                    <div class="knowledge-item" data-cat="instructions">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Как подключиться к рабочей сети?</h5>
+                                <p class="card-text">Инструкция по настройке VPN-подключения для удаленной работы...</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary" onclick="showArticle(this)">Читать далее →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="knowledge-item" data-cat="faq">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Что делать при сбое в работе МИС?</h5>
+                                <p class="card-text">Пошаговый алгоритм действий при возникновении технических проблем...</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary" onclick="showArticle(this)">Читать далее →</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="knowledge-item" data-cat="software">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Обновление антивирусного ПО</h5>
+                                <p class="card-text">Регламент обновления и проверки корпоративных устройств...</p>
+                                <a href="#" class="btn btn-sm btn-outline-primary" onclick="showArticle(this)">Читать далее →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для просмотра статьи -->
+    <div class="modal fade" id="articleModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="articleTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="articleContent">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showArticle(btn) {
+            const card = btn.closest('.card');
+            const title = card.querySelector('.card-title').textContent;
+            const content = card.querySelector('.card-text').textContent;
+            
+            document.getElementById('articleTitle').textContent = title;
+            document.getElementById('articleContent').innerHTML = `
+                <p>${content}</p>
+                <hr>
+                <p>Полная версия статьи доступна в корпоративной сети. Обратитесь к техническому специалисту.</p>
+            `;
+            
+            new bootstrap.Modal(document.getElementById('articleModal')).show();
+        }
+        
+        function searchKnowledge() {
+            const searchTerm = document.getElementById('searchKnowledge').value.toLowerCase();
+            const items = document.querySelectorAll('.knowledge-item');
+            
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+        }
+        
+        // Фильтрация по категориям
+        document.querySelectorAll('#categories .list-group-item').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const cat = btn.dataset.cat;
+                const items = document.querySelectorAll('.knowledge-item');
+                
+                document.querySelectorAll('#categories .list-group-item').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                items.forEach(item => {
+                    if (cat === 'all' || item.dataset.cat === cat) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
