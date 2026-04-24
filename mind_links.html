@@ -7,14 +7,40 @@
     <link rel="stylesheet" href="css/custom.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎥%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #5050eb;">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <i class="fas fa-video me-2"></i>КАТАЛОГ ССЫЛОК НА ВКС
+            <a class="navbar-brand d-flex align-items-center" href="index.html" style="gap: 10px;">
+                <i class="bi bi-suit-heart-fill"></i>
+                <span class="navbar-brand-text"> ИНФОРМАЦИОННАЯ СИСТЕМА</span>
             </a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            <i class="bi bi-house-door me-1"></i>Главная
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="phonebook.html">
+                            <i class="bi bi-telephone me-1"></i>Телефонный справочник
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="knowledgebase.html">
+                            <i class="bi bi-book me-1"></i>База знаний
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="t20.html" target="_blank">
+                            <i class="bi bi-code-square me-1"></i>Справочник Т020
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -22,18 +48,19 @@
         <div class="accordion-item">
             <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                    <i class="fas fa-calendar-day me-2"></i>Ежедневные видеоконференции
+                    <i class="fas fa-calendar-day me-2"></i> Периодические мероприятия
                 </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                     <table class="table table-bordered">
                         <thead class="table-dark">
-                            <tr><th><i class="fas fa-clock me-1"></i>Время</th><th><i class="fas fa-head-side-medical me-1"></i>Название</th><th><i class="fas fa-qrcode me-1"></i>ID</th><th><i class="fas fa-link me-1"></i>Ссылка</th></tr>
+                            <tr><th><i class="fas fa-head-side-medical me-1"></i>Название</th><th><i class="fas fa-qrcode me-1"></i>ID</th><th><i class="fas fa-link me-1"></i>Ссылка</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td class="fw-bold">09:00</td><td>Терапевтическая планерка</td><td>155-448-106</td><td><a href="#" onclick="alert('Подключение к ВКС')" class="btn btn-sm btn-primary"><i class="fas fa-video me-1"></i> Перейти</a></td></tr>
-                            <tr><td class="fw-bold">09:00</td><td>Хирургическая планерка</td><td>162-320-919</td><td><a href="#" onclick="alert('Подключение к ВКС')" class="btn btn-sm btn-primary"><i class="fas fa-video me-1"></i> Перейти</a></td></tr>
+                            <tr><td><i class="fas fa-chalkboard-user me-1"></i>День фельдшера</td><td>832-736-771</td><td><a href="https://mind.72to.ru/#join:tb6f6501a-1458-4b29-921d-857aa2b4f73e" target="_blank" class="btn btn-sm btn-primary"><i class="fas fa-video me-1"></i> Перейти</a></td></tr>
+                            <tr><td><i class="fas fa-chalkboard-user me-1"></i>МИАЦ. Обучение</td><td>157-372-152</td><td><a href="https://mind.72to.ru/#join:t17e4e0fa-3434-4337-b9f6-f0489acf31d6" target="_blank" class="btn btn-sm btn-primary"><i class="fas fa-video me-1"></i> Перейти</a></td></tr>
+                            <tr><td><i class="fas fa-chalkboard-user me-1"></i>Абатская районная больница</td><td>519-901-015</td><td><a href="https://mind.72to.ru/#join:t6ae4c19c-f7c1-45a0-b4e0-02769e75cf8d" target="_blank" class="btn btn-sm btn-primary"><i class="fas fa-video me-1"></i> Перейти</a></td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -42,39 +69,17 @@
         <div class="accordion-item">
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                    <i class="fas fa-calendar-week me-2"></i>Еженедельные видеоконференции
+                    <i class="fas fa-heart me-1"></i> Школы здоровья
                 </button>
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
                     <table class="table table-bordered">
                         <thead class="table-dark">
-                            <tr><th><i class="fas fa-calendar-alt me-1"></i>День</th><th><i class="fas fa-list me-1"></i>Мероприятия</th></tr>
+                            <tr><th><i class="fas fa-head-side-medical me-1"></i>Название</th><th><i class="fas fa-qrcode me-1"></i>ID</th><th><i class="fas fa-link me-1"></i>Ссылка</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td class="fw-bold"><i class="fas fa-calendar-day me-1"></i>Понедельник</td><td><i class="fas fa-clock me-1"></i><b>13:00</b> - Планерка старших медсестер <span class="badge bg-secondary">ID: 832-736-771</span></td></tr>
-                            <tr><td class="fw-bold"><i class="fas fa-calendar-day me-1"></i>Вторник</td><td><i class="fas fa-clock me-1"></i><b>14:00</b> - ВКС по цифровой трансформации <span class="badge bg-secondary">ID: 431-809-991</span></td></tr>
-                            <tr><td class="fw-bold"><i class="fas fa-calendar-day me-1"></i>Четверг</td><td><i class="fas fa-clock me-1"></i><b>15:00</b> - ВКС по офтальмологии <span class="badge bg-secondary">ID: 472-706-323</span></td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                    <i class="fas fa-calendar me-2"></i>Прочие периодические
-                </button>
-            </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <table class="table table-bordered">
-                        <thead class="table-dark">
-                            <tr><th><i class="fas fa-tag me-1"></i>Название</th><th><i class="fas fa-qrcode me-1"></i>ID</th><th><i class="fas fa-link me-1"></i>Ссылка</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><i class="fas fa-stethoscope me-1"></i>СПЭК</td><td>284-190-464</td><td><a href="#" onclick="alert('Подключение к СПЭК')" class="btn btn-sm btn-primary"><i class="fas fa-video me-1"></i> Перейти</a></td></tr>
-                            <tr><td><i class="fas fa-chalkboard-user me-1"></i>МИАЦ. Обучение</td><td>157-372-152</td><td><a href="#" onclick="alert('Подключение к МИАЦ')" class="btn btn-sm btn-primary"><i class="fas fa-video me-1"></i> Перейти</a></td></tr>
+                            <tr><td><i class="fas fa-chalkboard-user me-1"></i>Ссылка для подключения слушателей</td><td>756-260-311</td><td><a href="https://mind.72to.ru/#join:t166050a8-ef8b-42cc-a155-3650d51d10b8" target="_blank" class="btn btn-sm btn-primary"><i class="fas fa-video me-1"></i> Перейти</a></td></tr>
                         </tbody>
                     </table>
                 </div>
