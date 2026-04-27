@@ -481,6 +481,31 @@ body {
     width: 900px;
 }
 
+/* ========== КАТЕГОРИИ (БОКОВОЕ МЕНЮ) ========== */
+.card-header.bg-primary {
+    background: #2d487c !important;
+    border: none;
+}
+
+.list-group-item.active {
+    background: #3e578b !important;
+    border-color: #3e578b !important;
+    color: white !important;
+}
+
+/* ========== КНОПКА "НАЙТИ" ========== */
+.btn-primary {
+    background: #3e578b !important;
+    border: none !important;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #506592 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(62, 87, 139, 0.3);
+}
+
 @media (min-width: 1200px) {
     .modal-dialog.modal-lg {
         max-width: 1000px;
