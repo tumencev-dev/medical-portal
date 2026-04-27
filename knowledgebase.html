@@ -9,6 +9,289 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        .knowledge-item {
+            transition: all 0.3s ease;
+        }
+        
+        /* Контейнер для изображения */
+        .card-img-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            border-radius: 5px 0 0 5px;
+            padding: 10px;
+            width: 100%;
+            height: auto;
+        }
+        
+        .preview-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 5px;
+        }
+        
+        .knowledge-card {
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+            overflow: hidden;
+        }
+        
+        .knowledge-card .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        .card-body .card-text {
+            flex: 1;
+            margin-bottom: 15px;
+        }
+        
+        /* Стили для модального окна */
+        .modal-dialog.modal-lg {
+            max-width: 90%;
+            width: 900px;
+        }
+        
+        @media (min-width: 1200px) {
+            .modal-dialog.modal-lg {
+                max-width: 1000px;
+                width: 1000px;
+            }
+        }
+        
+        @media (min-width: 1600px) {
+            .modal-dialog.modal-lg {
+                max-width: 1200px;
+                width: 1200px;
+            }
+        }
+        
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #3e578b 0%, #4a608d 100%);
+            color: white;
+            border-radius: 15px 15px 0 0;
+            padding: 20px 25px;
+        }
+        
+        .modal-header .btn-close {
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+        }
+        
+        .modal-header .btn-close:hover {
+            opacity: 1;
+        }
+        
+        .modal-title {
+            font-weight: 600;
+            font-size: 1.4rem;
+        }
+        
+        .modal-body {
+            padding: 25px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .modal-footer {
+            border-top: 1px solid #e9ecef;
+            padding: 15px 25px;
+        }
+        
+        /* Стили для одиночного изображения */
+        .single-image {
+            text-align: center;
+            margin-bottom: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+        }
+        
+        .single-image img {
+            max-width: 100%;
+            max-height: 400px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Стили для карусели изображений */
+        .article-images-carousel {
+            position: relative;
+            margin-bottom: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .carousel-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            min-height: 300px;
+        }
+        
+        .carousel-image {
+            max-width: 100%;
+            max-height: 400px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carousel-btn:hover {
+            background: rgba(0,0,0,0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-btn-prev {
+            left: 15px;
+        }
+        
+        .carousel-btn-next {
+            right: 15px;
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px;
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .carousel-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        .carousel-dot:hover {
+            background: rgba(255,255,255,0.8);
+        }
+        
+        .image-counter {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            z-index: 10;
+        }
+        
+        .article-full-content {
+            line-height: 1.6;
+        }
+        
+        .badge-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 1;
+        }
+        
+        .knowledge-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .card-img-container {
+                border-radius: 5px 5px 0 0;
+            }
+            
+            .carousel-container {
+                min-height: 220px;
+            }
+            
+            .carousel-image {
+                max-height: 250px;
+            }
+            
+            .carousel-btn {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .single-image img {
+                max-height: 250px;
+            }
+        }
+        
+        .article-full-content a {
+            color: #3e578b;
+            text-decoration: none;
+            border-bottom: 1px solid #3e578b;
+        }
+        
+        .article-full-content a:hover {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+        
+        .article-full-content .alert {
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -20,7 +303,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">
+                        <a class="nav-link" href="index.html">
                             <i class="bi bi-house-door me-1"></i>Главная
                         </a>
                     </li>
@@ -30,7 +313,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="knowledgebase.html">
+                        <a class="nav-link active" href="knowledgebase.html">
                             <i class="bi bi-book me-1"></i>База знаний
                         </a>
                     </li>
@@ -47,22 +330,22 @@
     <div class="main-container">
         <div class="row">
             <div class="col-md-3 mb-4">
-                <div class="card">
+                <div class="card sticky-top" style="top: 20px;">
                     <div class="card-header bg-primary text-white">
                         <i class="fas fa-folder-open me-2"></i> Категории
                     </div>
                     <div class="list-group list-group-flush" id="categories">
                         <button class="list-group-item list-group-item-action active" data-cat="all">
-                            <i class="fas fa-list me-2"></i>Все статьи
+                            <i class="fas fa-list me-2"></i>Все статьи (<span id="countAll">0</span>)
                         </button>
                         <button class="list-group-item list-group-item-action" data-cat="instructions">
-                            <i class="fas fa-clipboard-list me-2"></i>Инструкции
+                            <i class="fas fa-clipboard-list me-2"></i>Инструкции (<span id="countInstructions">0</span>)
                         </button>
                         <button class="list-group-item list-group-item-action" data-cat="faq">
-                            <i class="fas fa-question-circle me-2"></i>Вопрос-ответ
+                            <i class="fas fa-question-circle me-2"></i>Вопрос-ответ (<span id="countFaq">0</span>)
                         </button>
                         <button class="list-group-item list-group-item-action" data-cat="software">
-                            <i class="fas fa-laptop-code me-2"></i>Программное обеспечение
+                            <i class="fas fa-laptop-code me-2"></i>Программное обеспечение (<span id="countSoftware">0</span>)
                         </button>
                     </div>
                 </div>
@@ -70,46 +353,17 @@
             <div class="col-md-9">
                 <div class="input-group mb-4">
                     <input type="text" class="form-control" id="searchKnowledge" placeholder="Поиск по базе знаний...">
-                    <button class="btn btn-primary" onclick="searchKnowledge()">
+                    <button class="btn btn-primary" id="searchBtn">
                         <i class="fas fa-search"></i> Найти
                     </button>
                 </div>
                 
                 <div id="knowledgeContent">
-                    <div class="knowledge-item" data-cat="instructions">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-network-wired me-2"></i>Как подключиться к рабочей сети?</h5>
-                                <p class="card-text">Инструкция по настройке VPN-подключения для удаленной работы...</p>
-                                <a href="#" class="btn btn-sm btn-outline-primary" onclick="showArticle(this)">
-                                    <i class="fas fa-arrow-right me-1"></i>Читать далее →
-                                </a>
-                            </div>
+                    <div class="loading-spinner">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Загрузка статей...</span>
                         </div>
-                    </div>
-                    
-                    <div class="knowledge-item" data-cat="faq">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-exclamation-triangle me-2"></i>Что делать при сбое в работе МИС?</h5>
-                                <p class="card-text">Пошаговый алгоритм действий при возникновении технических проблем...</p>
-                                <a href="#" class="btn btn-sm btn-outline-primary" onclick="showArticle(this)">
-                                    <i class="fas fa-arrow-right me-1"></i>Читать далее →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="knowledge-item" data-cat="software">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title"><i class="fas fa-shield-alt me-2"></i>Обновление антивирусного ПО</h5>
-                                <p class="card-text">Регламент обновления и проверки корпоративных устройств...</p>
-                                <a href="#" class="btn btn-sm btn-outline-primary" onclick="showArticle(this)">
-                                    <i class="fas fa-arrow-right me-1"></i>Читать далее →
-                                </a>
-                            </div>
-                        </div>
+                        <span class="ms-3">Загрузка статей...</span>
                     </div>
                 </div>
             </div>
@@ -117,62 +371,345 @@
     </div>
 
     <!-- Модальное окно для просмотра статьи -->
-    <div class="modal fade" id="articleModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
+    <div class="modal fade" id="articleModal" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="articleTitle"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
                 <div class="modal-body" id="articleContent"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-1"></i>Закрыть
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function showArticle(btn) {
-            const card = btn.closest('.card');
-            const title = card.querySelector('.card-title').textContent;
-            const content = card.querySelector('.card-text').textContent;
+        // ========== ДАННЫЕ СТАТЕЙ (ВСТРОЕННЫЕ) ==========
+        const articlesData = [
+            {
+                id: 1,
+                title: "Где найти инструкции по 1С?",
+                category: "faq",
+                previewImg: "https://kb.1cmr.ru/download/attachments/65591/image-2024-5-22_9-21-11.png",
+                shortText: "Инструкции размещены на сайте разработчика «1С-Медицина. Регион». Ссылка в полном тексте статьи",
+                fullText: `
+                    <h4><i class="fas fa-book me-2"></i>Инструкции по 1С: Здравоохранение</h4>
+                    <p>Документация для пользователей «1С: Здравоохранение 72» доступна на официальном портале технической поддержки.</p>
+                    <div class="alert alert-info mt-3">
+                        <i class="fas fa-link me-2"></i>
+                        <strong>Ссылка:</strong> 
+                        <a href="https://kb.1cmr.ru/" target="_blank">Перейти на сайт базы знаний 1С-Медицина</a>
+                    </div>
+                    <p>На сайте вы найдете:</p>
+                    <ul>
+                        <li>Руководства пользователя</li>
+                        <li>Видеоинструкции</li>
+                        <li>Ответы на частые вопросы</li>
+                    </ul>
+                `,
+                images: [
+                    "https://kb.1cmr.ru/download/attachments/65591/image-2024-5-22_9-21-11.png"
+                ]
+            },
+            {
+                id: 2,
+                title: "Что такое электронная поста MED-TO?",
+                category: "faq",
+                previewImg: "https://placehold.co/600x400/3498db/white?text=MED-TO+Почта",
+                shortText: "Как зайти, как зарегистрироваться в почте MED-TO",
+                fullText: `
+                    <h4><i class="fas fa-envelope me-2"></i>Работа с почтой MED-TO</h4>
+                    <p>Корпоративная почта доступна по адресу: <a href="https://rc.med-to.ru/" target="_blank">rc.med-to.ru</a>
+                    <br>Для входа необходим логин и пароль</p>
+                    <p>Получить его вы можете по заявке: <a href="https://forms.yandex.ru/cloud/69eeea7de010db837b0ccb8b" target="_blank">Заявка на электронную почту</a>
+                    <br>Заполняете заявку, после с вами свяжется техник-программист и сообщит логин и пароль от вашего почтового ящика</p>
+                    <h5>Основные возможности:</h5>
+                    <ul>
+                        <li>Отправка и получение писем</li>
+                        <li>Работа с календарем</li>
+                        <li>Создание задач и напоминаний</li>
+                    </ul>
+                `,
+                images: []
+            }
+        ];
+
+        let articles = [];
+        let currentFilter = 'all';
+        let currentSearchTerm = '';
+
+        function initArticles() {
+            articles = [...articlesData];
+            renderArticles();
+            updateCategoryCounts();
+        }
+
+        function renderArticles() {
+            const container = document.getElementById('knowledgeContent');
+            let filteredArticles = [...articles];
             
-            document.getElementById('articleTitle').innerHTML = title;
-            document.getElementById('articleContent').innerHTML = `
-                <p>${content}</p>
-                <hr>
-                <p><i class="fas fa-info-circle me-2"></i>Полная версия статьи доступна в корпоративной сети. Обратитесь к техническому специалисту.</p>
+            if (currentFilter !== 'all') {
+                filteredArticles = filteredArticles.filter(a => a.category === currentFilter);
+            }
+            
+            if (currentSearchTerm) {
+                const term = currentSearchTerm.toLowerCase();
+                filteredArticles = filteredArticles.filter(a => 
+                    (a.title && a.title.toLowerCase().includes(term)) || 
+                    (a.shortText && a.shortText.toLowerCase().includes(term)) ||
+                    (a.fullText && a.fullText.toLowerCase().includes(term))
+                );
+            }
+            
+            if (filteredArticles.length === 0) {
+                container.innerHTML = `
+                    <div class="alert alert-info text-center">
+                        <i class="fas fa-info-circle fa-2x mb-2 d-block"></i>
+                        <h5>Статьи не найдены</h5>
+                        <p>Попробуйте изменить критерии поиска или выберите другую категорию.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = filteredArticles.map(article => `
+                <div class="knowledge-item mb-4" data-cat="${article.category}" data-id="${article.id}">
+                    <div class="card knowledge-card">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <div class="card-img-container">
+                                    <img src="${article.previewImg}" class="preview-img" alt="${escapeHtml(article.title)}" onerror="this.src='https://placehold.co/600x400/e9ecef/6c757d?text=Нет+изображения'">
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <span class="badge ${article.category === 'instructions' ? 'bg-primary' : (article.category === 'faq' ? 'bg-warning text-dark' : 'bg-success')} badge-category">
+                                        ${article.category === 'instructions' ? '<i class="fas fa-clipboard-list me-1"></i> Инструкция' : (article.category === 'faq' ? '<i class="fas fa-question-circle me-1"></i> Вопрос-ответ' : '<i class="fas fa-laptop-code me-1"></i> ПО')}
+                                    </span>
+                                    <h5 class="card-title pe-5">
+                                        ${escapeHtml(article.title)}
+                                    </h5>
+                                    <p class="card-text">${escapeHtml(article.shortText)}</p>
+                                    <button class="btn btn-sm btn-outline-primary mt-2 align-self-start" onclick="showFullArticle(${article.id})">
+                                        <i class="fas fa-arrow-right me-1"></i>Читать далее →
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        function updateCategoryCounts() {
+            const total = articles.length;
+            const instructions = articles.filter(a => a.category === 'instructions').length;
+            const faq = articles.filter(a => a.category === 'faq').length;
+            const software = articles.filter(a => a.category === 'software').length;
+            
+            document.getElementById('countAll').textContent = total;
+            document.getElementById('countInstructions').textContent = instructions;
+            document.getElementById('countFaq').textContent = faq;
+            document.getElementById('countSoftware').textContent = software;
+        }
+        
+        // Карусель изображений (только для 2+ изображений)
+        let currentImageIndex = 0;
+        let currentImagesList = [];
+        
+        function renderImageCarousel(images) {
+            if (!images || images.length === 0) return '';
+            
+            // Если только одно изображение - показываем без карусели
+            if (images.length === 1) {
+                return `
+                    <div class="single-image">
+                        <img src="${images[0]}" alt="Изображение" onerror="this.src='https://placehold.co/800x500/e9ecef/6c757d?text=Ошибка+загрузки'">
+                    </div>
+                `;
+            }
+            
+            // Для 2+ изображений - карусель
+            currentImagesList = images;
+            currentImageIndex = 0;
+            
+            return `
+                <div class="article-images-carousel" id="imageCarousel">
+                    <div class="carousel-container">
+                        <button class="carousel-btn carousel-btn-prev" onclick="changeImage(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <img id="carouselMainImage" src="${images[0]}" class="carousel-image" alt="Изображение" onerror="this.src='https://placehold.co/800x500/e9ecef/6c757d?text=Ошибка+загрузки'">
+                        <button class="carousel-btn carousel-btn-next" onclick="changeImage(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <div class="image-counter" id="imageCounter">
+                            1 / ${images.length}
+                        </div>
+                    </div>
+                    <div class="carousel-dots" id="carouselDots">
+                        ${images.map((_, idx) => `
+                            <div class="carousel-dot ${idx === 0 ? 'active' : ''}" onclick="setImageIndex(${idx})"></div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        
+        function changeImage(direction) {
+            if (!currentImagesList.length || currentImagesList.length < 2) return;
+            
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) currentImageIndex = currentImagesList.length - 1;
+            if (currentImageIndex >= currentImagesList.length) currentImageIndex = 0;
+            
+            const imgElement = document.getElementById('carouselMainImage');
+            const counterElement = document.getElementById('imageCounter');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            if (imgElement) {
+                imgElement.src = currentImagesList[currentImageIndex];
+            }
+            if (counterElement) {
+                counterElement.textContent = `${currentImageIndex + 1} / ${currentImagesList.length}`;
+            }
+            
+            dots.forEach((dot, idx) => {
+                if (idx === currentImageIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function setImageIndex(index) {
+            if (!currentImagesList.length || currentImagesList.length < 2) return;
+            if (index < 0 || index >= currentImagesList.length) return;
+            
+            currentImageIndex = index;
+            
+            const imgElement = document.getElementById('carouselMainImage');
+            const counterElement = document.getElementById('imageCounter');
+            const dots = document.querySelectorAll('.carousel-dot');
+            
+            if (imgElement) {
+                imgElement.src = currentImagesList[currentImageIndex];
+            }
+            if (counterElement) {
+                counterElement.textContent = `${currentImageIndex + 1} / ${currentImagesList.length}`;
+            }
+            
+            dots.forEach((dot, idx) => {
+                if (idx === currentImageIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function showFullArticle(articleId) {
+            const article = articles.find(a => a.id === articleId);
+            if (!article) return;
+            
+            const categoryIcon = article.category === 'instructions' ? 'fa-clipboard-list' : (article.category === 'faq' ? 'fa-question-circle' : 'fa-laptop-code');
+            const categoryColor = article.category === 'instructions' ? 'primary' : (article.category === 'faq' ? 'warning' : 'success');
+            
+            document.getElementById('articleTitle').innerHTML = `
+                <i class="fas ${categoryIcon} me-2 text-${categoryColor}"></i>
+                ${escapeHtml(article.title)}
             `;
             
-            new bootstrap.Modal(document.getElementById('articleModal')).show();
-        }
-        
-        function searchKnowledge() {
-            const searchTerm = document.getElementById('searchKnowledge').value.toLowerCase();
-            const items = document.querySelectorAll('.knowledge-item');
+            // Генерация изображений (карусель только для 2+ изображений)
+            let imagesHtml = renderImageCarousel(article.images);
             
-            items.forEach(item => {
-                const text = item.textContent.toLowerCase();
-                item.style.display = text.includes(searchTerm) ? '' : 'none';
-            });
+            document.getElementById('articleContent').innerHTML = `
+                <div class="article-full-content">
+                    ${imagesHtml}
+                    <div>
+                        ${article.fullText}
+                    </div>
+                    <hr class="mt-4">
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                        <small class="text-muted">
+                            <i class="fas fa-tag me-1"></i> 
+                            Категория: ${article.category === 'instructions' ? 'Инструкция' : (article.category === 'faq' ? 'Вопрос-ответ' : 'Программное обеспечение')}
+                        </small>
+                        <small class="text-muted">
+                            <i class="fas fa-calendar-alt me-1"></i> ID статьи: ${article.id}
+                        </small>
+                    </div>
+                </div>
+            `;
+            
+            const modal = new bootstrap.Modal(document.getElementById('articleModal'));
+            modal.show();
         }
         
-        document.querySelectorAll('#categories .list-group-item').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const cat = btn.dataset.cat;
-                const items = document.querySelectorAll('.knowledge-item');
-                
-                document.querySelectorAll('#categories .list-group-item').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                items.forEach(item => {
-                    if (cat === 'all' || item.dataset.cat === cat) {
-                        item.style.display = '';
-                    } else {
-                        item.style.display = 'none';
-                    }
+        function performSearch() {
+            const searchInput = document.getElementById('searchKnowledge');
+            currentSearchTerm = searchInput.value;
+            renderArticles();
+        }
+        
+        function resetSearch() {
+            currentSearchTerm = '';
+            const searchInput = document.getElementById('searchKnowledge');
+            if (searchInput) searchInput.value = '';
+        }
+        
+        function initFilters() {
+            document.querySelectorAll('#categories .list-group-item').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const cat = btn.dataset.cat;
+                    currentFilter = cat;
+                    resetSearch();
+                    
+                    document.querySelectorAll('#categories .list-group-item').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    renderArticles();
                 });
             });
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initArticles();
+            initFilters();
+            
+            const searchBtn = document.getElementById('searchBtn');
+            const searchInput = document.getElementById('searchKnowledge');
+            
+            if (searchBtn) {
+                searchBtn.addEventListener('click', performSearch);
+            }
+            if (searchInput) {
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+            }
         });
+        
+        // Делаем функции глобальными для использования в onclick
+        window.showFullArticle = showFullArticle;
+        window.changeImage = changeImage;
+        window.setImageIndex = setImageIndex;
     </script>
 </body>
 </html>
