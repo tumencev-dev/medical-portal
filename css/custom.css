@@ -393,8 +393,304 @@ body {
     border-radius: 12px;
     transition: all 0.3s;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    width: 390px;
     background-color: #4a608d;
+}
+
+/* Стили для мобильной навигации */
+.navbar-toggler {
+    border: none;
+    padding: 8px 12px;
+    transition: all 0.3s;
+    background-color: rgba(255,255,255,0.15);
+    border-radius: 10px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+    outline: none;
+}
+
+.navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* Адаптация для планшетов и мобильных устройств */
+@media (max-width: 991px) {
+    /* Настройка контейнера навигации */
+    .navbar-collapse {
+        background-color: #3e578b;
+        border-radius: 0 0 20px 20px;
+        padding: 15px 20px;
+        margin-top: 10px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    /* Стили для пунктов меню на мобильных */
+    .navbar-nav {
+        gap: 8px;
+    }
+    
+    .nav-item {
+        width: 100%;
+    }
+    
+    .nav-link {
+        padding: 12px 15px !important;
+        border-radius: 12px;
+        transition: all 0.2s;
+        background-color: rgba(255,255,255,0.08);
+    }
+    
+    .nav-link:hover,
+    .nav-link:focus {
+        background-color: rgba(255,255,255,0.2);
+        transform: translateX(5px);
+    }
+    
+    .nav-link.active {
+        background-color: rgba(255,255,255,0.25);
+    }
+    
+    /* Улучшение отображения карточек */
+    .service-card-img {
+        height: 110px;
+    }
+    
+    .service-card-img img {
+        max-width: 65px;
+    }
+    
+    .service-card-footer {
+        flex-direction: column;
+    }
+    
+    .service-card-footer .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    /* Уменьшение отступов */
+    .main-container {
+        padding: 15px;
+    }
+    
+    .news-card {
+        padding: 18px;
+    }
+    
+    .news-title {
+        font-size: 1.3rem;
+    }
+    
+    /* Адаптация таблицы телефонного справочника */
+    .phonebook-table {
+        font-size: 13px;
+    }
+    
+    .phonebook-table th,
+    .phonebook-table td {
+        padding: 10px 8px;
+    }
+    
+    /* Аккордеон на мобильных */
+    .accordion {
+        padding: 15px;
+    }
+    
+    .accordion-button {
+        padding: 15px;
+        font-size: 0.95rem;
+    }
+    
+    .accordion-body {
+        padding: 15px;
+        overflow-x: auto;
+    }
+}
+
+/* Для очень маленьких экранов (до 576px) */
+@media (max-width: 576px) {
+    .navbar-brand {
+        width: auto !important;
+        padding: 8px 12px !important;
+        font-size: 1rem !important;
+    }
+    
+    .navbar-brand-text {
+        font-size: 0.85rem;
+    }
+    
+    .service-card-title {
+        font-size: 1rem;
+    }
+    
+    .service-card-text {
+        font-size: 0.8rem;
+    }
+    
+    .news-title {
+        font-size: 1.1rem;
+    }
+    
+    .news-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .news-date {
+        font-size: 0.75rem;
+    }
+    
+    .news-content {
+        font-size: 0.9rem;
+    }
+    
+    /* Таблица на мобильных - горизонтальная прокрутка */
+    .phonebook-container {
+        padding: 10px;
+        overflow-x: auto;
+    }
+    
+    .phonebook-table {
+        min-width: 600px;
+        font-size: 12px;
+    }
+    
+    .phonebook-table th,
+    .phonebook-table td {
+        padding: 8px 6px;
+    }
+    
+    .phonebook-instructions {
+        padding: 15px;
+        font-size: 0.85rem;
+    }
+    
+    /* Форма заявки */
+    .request-form {
+        padding: 20px;
+    }
+    
+    .request-header {
+        padding: 20px;
+    }
+    
+    .request-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    /* Успешная страница */
+    .success-card {
+        padding: 25px;
+    }
+    
+    .success-icon {
+        font-size: 3.5rem;
+    }
+    
+    .success-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    /* Аккордеон */
+    .accordion-button {
+        padding: 12px;
+        font-size: 0.85rem;
+    }
+    
+    .table {
+        font-size: 0.75rem;
+    }
+    
+    .table th,
+    .table td {
+        padding: 8px;
+    }
+    
+    /* Кнопки */
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+    
+    /* Сервисные карточки */
+    .services-container {
+        padding: 15px;
+    }
+    
+    .service-row {
+        gap: 15px;
+    }
+    
+    .service-card-body {
+        padding: 15px;
+    }
+    
+    .service-card-footer {
+        padding: 12px 15px;
+    }
+}
+
+/* Для планшетов среднего размера (577px - 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .main-container {
+        padding: 10px;
+    }
+    
+    .service-row {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    
+    .phonebook-table {
+        font-size: 12px;
+    }
+    
+    .phonebook-table th,
+    .phonebook-table td {
+        padding: 8px;
+    }
+    
+    .request-form {
+        padding: 20px;
+    }
+    
+    .news-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* Для больших экранов фиксируем ширину бренда */
+@media (min-width: 992px) {
+    .navbar-brand {
+        width: 390px;
+    }
+}
+
+/* Дополнительные улучшения для touch-устройств */
+@media (hover: none) and (pointer: coarse) {
+    /* Увеличиваем область нажатия для кнопок */
+    .btn,
+    .nav-link,
+    .service-card,
+    .news-card,
+    .accordion-button {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Убираем hover эффекты на touch-устройствах */
+    .service-card:hover {
+        transform: none;
+    }
+    
+    .news-card:hover {
+        transform: none;
+    }
+    
+    .nav-link:hover {
+        transform: none;
+    }
 }
 
 .table {
@@ -405,7 +701,7 @@ body {
     background: #2c3e50;
 }
 
-/* Адаптивность */
+/* Общие адаптивные стили */
 @media (max-width: 768px) {
     .main-container {
         padding: 10px;
@@ -426,5 +722,183 @@ body {
     
     .request-form {
         padding: 20px;
+    }
+}
+
+/* Стили для карусели изображений в базе знаний */
+.article-images-carousel {
+    position: relative;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    min-height: 300px;
+}
+
+.carousel-image {
+    max-width: 100%;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: rgba(0,0,0,0.8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn-prev {
+    left: 15px;
+}
+
+.carousel-btn-next {
+    right: 15px;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    background: rgba(0,0,0,0.5);
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.carousel-dot.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+/* Адаптация карусели для мобильных */
+@media (max-width: 768px) {
+    .carousel-container {
+        min-height: 220px;
+    }
+    
+    .carousel-image {
+        max-height: 250px;
+    }
+    
+    .carousel-btn {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* ===== МОБИЛЬНАЯ НАВИГАЦИЯ ===== */
+
+/* Стили для кнопки-бургера */
+.navbar-toggler {
+    border: none;
+    padding: 8px 12px;
+    transition: all 0.3s;
+    background-color: rgba(255,255,255,0.15);
+    border-radius: 10px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+    outline: none;
+}
+
+.navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 991px) {
+    /* Сворачиваемое меню */
+    .navbar-collapse {
+        background-color: #3e578b;
+        border-radius: 0 0 20px 20px;
+        padding: 15px 20px;
+        margin-top: 10px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+    
+    /* Стили для пунктов меню на мобильных */
+    .navbar-nav {
+        gap: 8px;
+        width: 100%;
+    }
+    
+    .nav-item {
+        width: 100%;
+    }
+    
+    .nav-link {
+        padding: 12px 15px !important;
+        border-radius: 12px;
+        transition: all 0.2s;
+        background-color: rgba(255,255,255,0.08);
+    }
+    
+    .nav-link:hover,
+    .nav-link:focus {
+        background-color: rgba(255,255,255,0.2);
+        transform: translateX(5px);
+    }
+    
+    .nav-link.active {
+        background-color: rgba(255,255,255,0.25);
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 576px) {
+    .navbar-brand {
+        width: auto !important;
+        padding: 8px 12px !important;
+        font-size: 0.95rem !important;
+    }
+    
+    .navbar-brand-text {
+        font-size: 0.8rem;
+    }
+    
+    .navbar-brand i {
+        font-size: 1.2rem;
     }
 }
