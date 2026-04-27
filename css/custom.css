@@ -1,3 +1,4 @@
+/* ========== RESET & GLOBALS ========== */
 * {
     margin: 0;
     padding: 0;
@@ -10,14 +11,14 @@ body {
     font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
 }
 
-/* Основной контейнер */
+/* ========== MAIN CONTAINER ========== */
 .main-container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
 }
 
-/* Новости */
+/* ========== NEWS BLOCK ========== */
 .news-container {
     display: flex;
     flex-direction: column;
@@ -82,7 +83,7 @@ body {
     transform: scale(1.05);
 }
 
-/* Сервисные карточки */
+/* ========== SERVICES CARDS ========== */
 .services-container {
     background: rgba(255,255,255,0.3);
     border-radius: 30px;
@@ -155,7 +156,7 @@ body {
     border-top: 1px solid #e9ecef;
 }
 
-/* Таблица телефонного справочника */
+/* ========== PHONEBOOK ========== */
 .phonebook-container {
     max-width: 1400px;
     margin: 20px auto;
@@ -207,7 +208,7 @@ body {
     margin-bottom: 10px;
 }
 
-/* Форма заявки */
+/* ========== REQUEST FORM ========== */
 .request-container {
     max-width: 800px;
     margin: 40px auto;
@@ -310,7 +311,7 @@ body {
     box-shadow: 0 5px 20px rgba(102,126,234,0.4);
 }
 
-/* Страница успешной отправки */
+/* ========== SUCCESS PAGE ========== */
 .success-container {
     max-width: 600px;
     margin: 80px auto;
@@ -349,7 +350,7 @@ body {
     flex-wrap: wrap;
 }
 
-/* Аккордеон для mind_links */
+/* ========== ACCORDION ========== */
 .accordion {
     max-width: 1200px;
     margin: 30px auto;
@@ -380,8 +381,11 @@ body {
     background: white;
 }
 
+/* ========== NAVBAR ========== */
 .navbar {
     background-color: #3e578b;
+    position: relative;
+    z-index: 1030; /* выше, чем sticky карточка */
 }
 
 .navbar-brand {
@@ -396,7 +400,6 @@ body {
     background-color: #4a608d;
 }
 
-/* Стили для мобильной навигации */
 .navbar-toggler {
     border: none;
     padding: 8px 12px;
@@ -414,318 +417,142 @@ body {
     filter: brightness(0) invert(1);
 }
 
-/* Адаптация для планшетов и мобильных устройств */
-@media (max-width: 991px) {
-    /* Настройка контейнера навигации */
-    .navbar-collapse {
-        background-color: #3e578b;
-        border-radius: 0 0 20px 20px;
-        padding: 15px 20px;
-        margin-top: 10px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-    
-    /* Стили для пунктов меню на мобильных */
-    .navbar-nav {
-        gap: 8px;
-    }
-    
-    .nav-item {
-        width: 100%;
-    }
-    
-    .nav-link {
-        padding: 12px 15px !important;
-        border-radius: 12px;
-        transition: all 0.2s;
-        background-color: rgba(255,255,255,0.08);
-    }
-    
-    .nav-link:hover,
-    .nav-link:focus {
-        background-color: rgba(255,255,255,0.2);
-        transform: translateX(5px);
-    }
-    
-    .nav-link.active {
-        background-color: rgba(255,255,255,0.25);
-    }
-    
-    /* Улучшение отображения карточек */
-    .service-card-img {
-        height: 110px;
-    }
-    
-    .service-card-img img {
-        max-width: 65px;
-    }
-    
-    .service-card-footer {
-        flex-direction: column;
-    }
-    
-    .service-card-footer .btn {
-        width: 100%;
-        text-align: center;
-        justify-content: center;
-    }
-    
-    /* Уменьшение отступов */
-    .main-container {
-        padding: 15px;
-    }
-    
-    .news-card {
-        padding: 18px;
-    }
-    
-    .news-title {
-        font-size: 1.3rem;
-    }
-    
-    /* Адаптация таблицы телефонного справочника */
-    .phonebook-table {
-        font-size: 13px;
-    }
-    
-    .phonebook-table th,
-    .phonebook-table td {
-        padding: 10px 8px;
-    }
-    
-    /* Аккордеон на мобильных */
-    .accordion {
-        padding: 15px;
-    }
-    
-    .accordion-button {
-        padding: 15px;
-        font-size: 0.95rem;
-    }
-    
-    .accordion-body {
-        padding: 15px;
-        overflow-x: auto;
+/* ========== KNOWLEDGE BASE (CARDS, MODAL, CAROUSEL) ========== */
+.knowledge-item {
+    transition: all 0.3s ease;
+}
+
+.card-img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+    border-radius: 5px 0 0 5px;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+}
+
+.preview-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+}
+
+.knowledge-card {
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+}
+
+.knowledge-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.knowledge-card .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.card-body .card-text {
+    flex: 1;
+    margin-bottom: 15px;
+}
+
+.badge-category {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1;
+}
+
+/* Modal styles */
+.modal-dialog.modal-lg {
+    max-width: 90%;
+    width: 900px;
+}
+
+@media (min-width: 1200px) {
+    .modal-dialog.modal-lg {
+        max-width: 1000px;
+        width: 1000px;
     }
 }
 
-/* Для очень маленьких экранов (до 576px) */
-@media (max-width: 576px) {
-    .navbar-brand {
-        width: auto !important;
-        padding: 8px 12px !important;
-        font-size: 1rem !important;
-    }
-    
-    .navbar-brand-text {
-        font-size: 0.85rem;
-    }
-    
-    .service-card-title {
-        font-size: 1rem;
-    }
-    
-    .service-card-text {
-        font-size: 0.8rem;
-    }
-    
-    .news-title {
-        font-size: 1.1rem;
-    }
-    
-    .news-subtitle {
-        font-size: 0.9rem;
-    }
-    
-    .news-date {
-        font-size: 0.75rem;
-    }
-    
-    .news-content {
-        font-size: 0.9rem;
-    }
-    
-    /* Таблица на мобильных - горизонтальная прокрутка */
-    .phonebook-container {
-        padding: 10px;
-        overflow-x: auto;
-    }
-    
-    .phonebook-table {
-        min-width: 600px;
-        font-size: 12px;
-    }
-    
-    .phonebook-table th,
-    .phonebook-table td {
-        padding: 8px 6px;
-    }
-    
-    .phonebook-instructions {
-        padding: 15px;
-        font-size: 0.85rem;
-    }
-    
-    /* Форма заявки */
-    .request-form {
-        padding: 20px;
-    }
-    
-    .request-header {
-        padding: 20px;
-    }
-    
-    .request-header h2 {
-        font-size: 1.3rem;
-    }
-    
-    /* Успешная страница */
-    .success-card {
-        padding: 25px;
-    }
-    
-    .success-icon {
-        font-size: 3.5rem;
-    }
-    
-    .success-card h3 {
-        font-size: 1.3rem;
-    }
-    
-    /* Аккордеон */
-    .accordion-button {
-        padding: 12px;
-        font-size: 0.85rem;
-    }
-    
-    .table {
-        font-size: 0.75rem;
-    }
-    
-    .table th,
-    .table td {
-        padding: 8px;
-    }
-    
-    /* Кнопки */
-    .btn {
-        padding: 8px 16px;
-        font-size: 0.85rem;
-    }
-    
-    /* Сервисные карточки */
-    .services-container {
-        padding: 15px;
-    }
-    
-    .service-row {
-        gap: 15px;
-    }
-    
-    .service-card-body {
-        padding: 15px;
-    }
-    
-    .service-card-footer {
-        padding: 12px 15px;
+@media (min-width: 1600px) {
+    .modal-dialog.modal-lg {
+        max-width: 1200px;
+        width: 1200px;
     }
 }
 
-/* Для планшетов среднего размера (577px - 768px) */
-@media (min-width: 577px) and (max-width: 768px) {
-    .main-container {
-        padding: 10px;
-    }
-    
-    .service-row {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 15px;
-    }
-    
-    .phonebook-table {
-        font-size: 12px;
-    }
-    
-    .phonebook-table th,
-    .phonebook-table td {
-        padding: 8px;
-    }
-    
-    .request-form {
-        padding: 20px;
-    }
-    
-    .news-title {
-        font-size: 1.3rem;
-    }
+.modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
 
-/* Для больших экранов фиксируем ширину бренда */
-@media (min-width: 992px) {
-    .navbar-brand {
-        width: 390px;
-    }
+.modal-header {
+    background: linear-gradient(135deg, #3e578b 0%, #4a608d 100%);
+    color: white;
+    border-radius: 15px 15px 0 0;
+    padding: 20px 25px;
 }
 
-/* Дополнительные улучшения для touch-устройств */
-@media (hover: none) and (pointer: coarse) {
-    /* Увеличиваем область нажатия для кнопок */
-    .btn,
-    .nav-link,
-    .service-card,
-    .news-card,
-    .accordion-button {
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-    }
-    
-    /* Убираем hover эффекты на touch-устройствах */
-    .service-card:hover {
-        transform: none;
-    }
-    
-    .news-card:hover {
-        transform: none;
-    }
-    
-    .nav-link:hover {
-        transform: none;
-    }
+.modal-header .btn-close {
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
 }
 
-.table {
-    margin-bottom: 0;
+.modal-header .btn-close:hover {
+    opacity: 1;
 }
 
-.table-dark {
-    background: #2c3e50;
+.modal-title {
+    font-weight: 600;
+    font-size: 1.4rem;
 }
 
-/* Общие адаптивные стили */
-@media (max-width: 768px) {
-    .main-container {
-        padding: 10px;
-    }
-    
-    .service-row {
-        grid-template-columns: 1fr;
-    }
-    
-    .phonebook-table {
-        font-size: 12px;
-    }
-    
-    .phonebook-table th,
-    .phonebook-table td {
-        padding: 8px;
-    }
-    
-    .request-form {
-        padding: 20px;
-    }
+.modal-body {
+    padding: 25px;
+    max-height: 70vh;
+    overflow-y: auto;
 }
 
-/* Стили для карусели изображений в базе знаний */
+.modal-footer {
+    border-top: 1px solid #e9ecef;
+    padding: 15px 25px;
+}
+
+/* Single image */
+.single-image {
+    text-align: center;
+    margin-bottom: 25px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.single-image img {
+    max-width: 100%;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Carousel (unified version) */
 .article-images-carousel {
     position: relative;
     margin-bottom: 25px;
@@ -806,99 +633,360 @@ body {
     transform: scale(1.2);
 }
 
-/* Адаптация карусели для мобильных */
-@media (max-width: 768px) {
-    .carousel-container {
-        min-height: 220px;
-    }
-    
-    .carousel-image {
-        max-height: 250px;
-    }
-    
-    .carousel-btn {
-        width: 32px;
-        height: 32px;
-    }
+.carousel-dot:hover {
+    background: rgba(255,255,255,0.8);
 }
 
-/* ===== МОБИЛЬНАЯ НАВИГАЦИЯ ===== */
+.image-counter {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    z-index: 10;
+}
 
-/* Стили для кнопки-бургера */
-.navbar-toggler {
-    border: none;
-    padding: 8px 12px;
-    transition: all 0.3s;
-    background-color: rgba(255,255,255,0.15);
+.article-full-content {
+    line-height: 1.6;
+}
+
+.article-full-content a {
+    color: #3e578b;
+    text-decoration: none;
+    border-bottom: 1px solid #3e578b;
+}
+
+.article-full-content a:hover {
+    color: #667eea;
+    border-bottom-color: #667eea;
+}
+
+.article-full-content .alert {
     border-radius: 10px;
+    margin: 15px 0;
 }
 
-.navbar-toggler:focus {
-    box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
-    outline: none;
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
 }
 
-.navbar-toggler-icon {
-    filter: brightness(0) invert(1);
+/* ========== UTILITIES ========== */
+.table {
+    margin-bottom: 0;
 }
 
-/* Адаптация для мобильных устройств */
+.table-dark {
+    background: #2c3e50;
+}
+
+/* ========== MEDIA QUERIES ========== */
+
+/* Tablet and mobile navigation */
 @media (max-width: 991px) {
-    /* Сворачиваемое меню */
     .navbar-collapse {
-        background-color: #3e578b;
-        border-radius: 0 0 20px 20px;
-        padding: 15px 20px;
-        margin-top: 10px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
-        z-index: 1000;
+        background-color: #3e578b;
+        border-radius: 0 0 20px 20px;
+        padding: 15px 20px;
+        margin-top: 0; /* убрал лишний отступ */
+        box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+        z-index: 1050; /* выше sticky-элементов */
+        backdrop-filter: blur(0px);
+        max-height: 80vh;
+        overflow-y: auto;
     }
-    
-    /* Стили для пунктов меню на мобильных */
+
+    /* Блокируем прокрутку фона, когда меню открыто */
+    body.navbar-open {
+        overflow: hidden;
+    }
+
     .navbar-nav {
         gap: 8px;
         width: 100%;
+        margin: 0;
     }
-    
+
     .nav-item {
         width: 100%;
     }
-    
+
     .nav-link {
         padding: 12px 15px !important;
         border-radius: 12px;
         transition: all 0.2s;
         background-color: rgba(255,255,255,0.08);
     }
-    
+
     .nav-link:hover,
     .nav-link:focus {
         background-color: rgba(255,255,255,0.2);
         transform: translateX(5px);
     }
-    
+
     .nav-link.active {
         background-color: rgba(255,255,255,0.25);
     }
+
+    /* Фикс для sticky карточек на мобильных */
+    .sticky-top {
+        position: relative !important;
+        top: 0 !important;
+        z-index: 1;
+    }
+
+    /* Cards adjustment */
+    .service-card-img {
+        height: 110px;
+    }
+
+    .service-card-img img {
+        max-width: 65px;
+    }
+
+    .service-card-footer {
+        flex-direction: column;
+    }
+
+    .service-card-footer .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .main-container {
+        padding: 15px;
+    }
+
+    .news-card {
+        padding: 18px;
+    }
+
+    .news-title {
+        font-size: 1.3rem;
+    }
+
+    .phonebook-table {
+        font-size: 13px;
+    }
+
+    .phonebook-table th,
+    .phonebook-table td {
+        padding: 10px 8px;
+    }
+
+    .accordion {
+        padding: 15px;
+    }
+
+    .accordion-button {
+        padding: 15px;
+        font-size: 0.95rem;
+    }
+
+    .accordion-body {
+        padding: 15px;
+        overflow-x: auto;
+    }
+
+    /* Carousel */
+    .carousel-container {
+        min-height: 220px;
+    }
+
+    .carousel-image {
+        max-height: 250px;
+    }
+
+    .carousel-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .single-image img {
+        max-height: 250px;
+    }
 }
 
-/* Для очень маленьких экранов */
+/* Small devices (<=576px) */
 @media (max-width: 576px) {
     .navbar-brand {
-        width: auto !important;
         padding: 8px 12px !important;
         font-size: 0.95rem !important;
     }
-    
+
     .navbar-brand-text {
         font-size: 0.8rem;
     }
-    
+
     .navbar-brand i {
         font-size: 1.2rem;
+    }
+
+    .service-card-title {
+        font-size: 1rem;
+    }
+
+    .service-card-text {
+        font-size: 0.8rem;
+    }
+
+    .news-title {
+        font-size: 1.1rem;
+    }
+
+    .news-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .news-date {
+        font-size: 0.75rem;
+    }
+
+    .news-content {
+        font-size: 0.9rem;
+    }
+
+    /* Phonebook horizontal scroll */
+    .phonebook-container {
+        padding: 10px;
+        overflow-x: auto;
+    }
+
+    .phonebook-table {
+        min-width: 600px;
+        font-size: 12px;
+    }
+
+    .phonebook-table th,
+    .phonebook-table td {
+        padding: 8px 6px;
+    }
+
+    .phonebook-instructions {
+        padding: 15px;
+        font-size: 0.85rem;
+    }
+
+    .request-form {
+        padding: 20px;
+    }
+
+    .request-header {
+        padding: 20px;
+    }
+
+    .request-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .success-card {
+        padding: 25px;
+    }
+
+    .success-icon {
+        font-size: 3.5rem;
+    }
+
+    .success-card h3 {
+        font-size: 1.3rem;
+    }
+
+    .accordion-button {
+        padding: 12px;
+        font-size: 0.85rem;
+    }
+
+    .table {
+        font-size: 0.75rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    .services-container {
+        padding: 15px;
+    }
+
+    .service-row {
+        gap: 15px;
+    }
+
+    .service-card-body {
+        padding: 15px;
+    }
+
+    .service-card-footer {
+        padding: 12px 15px;
+    }
+}
+
+/* Medium tablets (577px - 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .main-container {
+        padding: 10px;
+    }
+
+    .service-row {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .phonebook-table {
+        font-size: 12px;
+    }
+
+    .phonebook-table th,
+    .phonebook-table td {
+        padding: 8px;
+    }
+
+    .request-form {
+        padding: 20px;
+    }
+
+    .news-title {
+        font-size: 1.3rem;
+    }
+}
+
+/* Desktop large */
+@media (min-width: 992px) {
+    .navbar-brand {
+        width: 390px;
+    }
+}
+
+/* Touch devices: remove hover effects */
+@media (hover: none) and (pointer: coarse) {
+    .btn,
+    .nav-link,
+    .service-card,
+    .news-card,
+    .accordion-button {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .service-card:hover,
+    .news-card:hover,
+    .nav-link:hover {
+        transform: none;
     }
 }
