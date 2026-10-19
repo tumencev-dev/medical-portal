@@ -32,11 +32,60 @@ body {
     padding: 25px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
 }
 
 .news-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+}
+
+/* Картинка слева от всего блока новости.
+   Прямоугольник: фиксированная ширина, высота по контенту,
+   изображение вписывается с сохранением пропорций (обрезка по краям). */
+.news-image {
+    flex: 0 0 260px;
+    width: 260px;
+    max-width: 260px;
+    align-self: stretch;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #eef1f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.news-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.news-image img:hover {
+    transform: scale(1.04);
+}
+
+/* Если картинки нет — этот блок не выводится,
+   и .news-card автоматически отображается как обычно (flex без левой колонки). */
+.news-card.no-image {
+    display: block;
+}
+
+/* Правая часть: заголовок + контент */
+.news-body-wrap {
+    flex: 1 1 auto;
+    min-width: 0; /* чтобы длинный текст не вылезал за пределы карточки */
+}
+
+.news-header {
+    margin-bottom: 10px;
 }
 
 .news-title {
@@ -57,6 +106,7 @@ body {
     display: flex;
     align-items: center;
     gap: 5px;
+    white-space: nowrap;
 }
 
 .news-content {
@@ -741,15 +791,14 @@ body {
         background-color: #3e578b;
         border-radius: 0 0 20px 20px;
         padding: 15px 20px;
-        margin-top: 0; /* убрал лишний отступ */
+        margin-top: 0;
         box-shadow: 0 15px 25px rgba(0,0,0,0.2);
-        z-index: 1050; /* выше sticky-элементов */
+        z-index: 1050;
         backdrop-filter: blur(0px);
         max-height: 80vh;
         overflow-y: auto;
     }
 
-    /* Блокируем прокрутку фона, когда меню открыто */
     body.navbar-open {
         overflow: hidden;
     }
@@ -781,14 +830,31 @@ body {
         background-color: rgba(255,255,255,0.25);
     }
 
-    /* Фикс для sticky карточек на мобильных */
     .sticky-top {
         position: relative !important;
         top: 0 !important;
         z-index: 1;
     }
 
-    /* Cards adjustment */
+    /* News card на планшетах: картинка сверху, контент снизу */
+    .news-card {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .news-image {
+        flex: none;
+        width: 100%;
+        max-width: 100%;
+        align-self: stretch;
+        max-height: 260px;
+    }
+
+    .news-image img {
+        max-height: 260px;
+        height: auto;
+    }
+
     .service-card-img {
         height: 110px;
     }
@@ -842,7 +908,6 @@ body {
         overflow-x: auto;
     }
 
-    /* Carousel */
     .carousel-container {
         min-height: 220px;
     }
@@ -900,7 +965,15 @@ body {
         font-size: 0.9rem;
     }
 
-    /* Phonebook horizontal scroll */
+    /* Картинка новости на мобильных: на всю ширину */
+    .news-image {
+        max-height: 200px;
+    }
+
+    .news-image img {
+        max-height: 200px;
+    }
+
     .phonebook-container {
         padding: 10px;
         overflow-x: auto;
